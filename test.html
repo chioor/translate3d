@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body{overflow: hidden;padding:0;margin:0;position: relative;overflow: hidden;}
+		.max{height: 100%;overflow-x: visible;background: #333c3366;position: fixed;overflow: hidden;}
+		#div1{float: left;width: 1585px;height: 100%;position: relative;overflow: hidden;}
+		#div2{float: left;width: 1585px;height: 100%;position: relative;overflow: hidden;}
+	</style>
+<head>
+<body>
+	<div class="max">
+		<img id="background" src="http://hotdot.pro/img/bck.png" style="position: absolute;overflow: visible;left: 0px;">
+		<div id="div1">
+			<img src="http://hotdot.pro/img/mainPage/intro/1.png" style="position: absolute;">
+			<img src="http://hotdot.pro/img/mainPage/intro/2.png" style="position: absolute;">
+			<img src="http://hotdot.pro/img/mainPage/intro/3.png" style="position: absolute;">
+			<img src="http://hotdot.pro/img/mainPage/intro/4.png" style="position: absolute;">
+			<h1 style="position: absolute;">Hello Word !</h1>
+		</div>
+		<div id="div2">
+			<img src="http://hotdot.pro/img/mainPage/bcode/bcode-pic.png" style="position: absolute;left: 100%;">
+			<h1 style="position: absolute;left:210%;color:#fff;">Website & logo</h1>
+			<img src="http://hotdot.pro/img/mainPage/bcode/bcode_logo.png" style="position: absolute;width: 500px;top: 500px;left: 235%;">
+		</div>
+
+		
+	</div>
+
+
+<script type="text/javascript">
+	var vb = 0;
+    var scrollFunc=function(e){ 
+    	var w=window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    	
+    e = e || window.event; 
+    if (e.wheelDelta) {//IE/Opera/Chrome 
+        a = e.wheelDelta / 3; 
+        vb = vb + a;
+        var f = -3 * w;
+        if (vb <= 0){
+        	var max = document.getElementsByClassName("max");
+        	var bg = document.getElementById("background");
+	        var div1 = document.getElementById("div1");
+	        var div2 = document.getElementById("div2");
+
+
+	        div1.style.width = w + "px";
+	        div2.style.width = w + "px";
+	        max[0].style.width = (2 * w) + "px";
+
+	        var fl = vb / 8;
+	        
+	        if (fl >= -w){
+	        	max[0].style.transform = "translate3d(" + (vb / 8) + "px, 0px, 0px)";
+	        	bg.style.transform = "translate3d(" + (vb / 500 - vb / 8) + "px, 0px, 0px)";
+		        div1.children[0].style.transform = "translate3d(" + (vb / 8) + "px, 0px, 0px)";
+		        div1.children[1].style.transform = "translate3d(" + (vb / 6) + "px, 0px, 0px)";
+		        div1.children[2].style.transform = "translate3d(" + (vb / 4) + "px, 0px, 0px)";
+		        div1.children[3].style.transform = "translate3d(" + (vb / 2) + "px, 0px, 0px)";
+		        div1.children[4].style.transform = "translate3d(" + (vb / 1) + "px, 0px, 0px)";
+		        div2.children[0].style.transform = "translate3d(" + (vb / 8) + "px, 0px, 0px)";
+		        div2.children[1].style.transform = "translate3d(" + (vb / 4) + "px, 0px, 0px)";
+		        div2.children[2].style.transform = "translate3d(" + (vb / 4) + "px, 0px, 0px)";
+
+	        } else {
+	        	fl = -w;
+	        	vb = 8 * fl;
+	        }
+	        
+        } else {
+        	vb = 0;
+        }
+        
+    } else if (e.detail) {//Firefox 
+        t2.value = e.detail; 
+    } 
+	} 
+	/*注册事件*/ 
+	if(document.addEventListener){ 
+	    document.addEventListener('DOMMouseScroll',scrollFunc,false); 
+	}//W3C 
+	window.onmousewheel=document.onmousewheel=scrollFunc;//IE/Opera/Chrome 
+</script>
+	
+</body>
+</html>
